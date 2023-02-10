@@ -1,0 +1,21 @@
+#!/bin/sh
+#SBATCH --partition=valhalla  --qos=valhalla
+#SBATCH --clusters=faculty
+##SBATCH --partition=general-compute  --qos=general-compute
+##SBATCH --clusters=ub-hpc
+##SBATCH --partition=scavenger  --qos=scavenger
+##SBATCH --clusters=faculty
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=1
+##SBATCH --mem-per-cpu=15000
+#SBATCH --mem=16000
+###SBATCH --mail-user=mshakiba@buffalo.edu
+echo "SLURM_JOBID="$SLURM_JOBID
+echo "SLURM_JOB_NODELIST="$SLURM_JOB_NODELIST
+echo "SLURM_NNODES="$SLURM_NNODES
+echo "SLURMTMPDIR="$SLURMTMPDIR
+echo "working directory="$SLURM_SUBMIT_DIR
+
+python run_namd_2states_models.py --recipe 3,6,2,2,0,0,0,0,0,0 --dt 200.0 --nsteps 125 --ntraj 1 
