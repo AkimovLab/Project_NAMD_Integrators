@@ -9,7 +9,7 @@ models = [0,1,2,3]
 #======= Initial conditions, Both coords and momenta are sampled, istate=[1,0]
 iconds = [6]
 #======= Different integration schemes for TDSE and Liouville
-reps    = [2]#,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25] 
+reps    = [2,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25] 
 #======= TSH or Ehrenfest
 tsh_ehr = [0,2]
 #======= No surface hopping
@@ -26,9 +26,6 @@ nac_update = [0]
 ssy = [0]
 # Make the recipes as below so that we can feed through Python arg parser
 recipes = list(product(models, iconds, reps, tsh_ehr, sh_opt, deco_opt, deco_time_opt, hop_acc, nac_update, ssy)) 
-# Adding case 22, Zhu's method, Eqs. 3.34-3.35 with TSH only
-#for model in models:
-#    recipes.append((model,2,22,0,0,0,0,0,0,0))
 print(len(recipes))
 print(recipes)
 #======= With only 1 trajectory
